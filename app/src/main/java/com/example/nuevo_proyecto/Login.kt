@@ -1,5 +1,8 @@
 package com.example.nuevo_proyecto
 
+import android.annotation.SuppressLint
+import android.os.Build
+import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
 import androidx.compose.foundation.clickable
@@ -11,17 +14,27 @@ import androidx.compose.foundation.layout.fillMaxWidth
 import androidx.compose.foundation.layout.height
 import androidx.compose.foundation.layout.padding
 import androidx.compose.foundation.layout.size
-import androidx.compose.foundation.layout.width
 import androidx.compose.foundation.shape.RoundedCornerShape
+import androidx.compose.material.icons.Icons
+import androidx.compose.material.icons.filled.ArrowBack
 import androidx.compose.material3.BottomAppBar
 import androidx.compose.material3.ExperimentalMaterial3Api
+import androidx.compose.material3.FloatingActionButton
+import androidx.compose.material3.FloatingActionButtonDefaults
 import androidx.compose.material3.Icon
 import androidx.compose.material3.IconButton
+import androidx.compose.material3.MaterialTheme
+import androidx.compose.material3.OutlinedTextField
 import androidx.compose.material3.Scaffold
 import androidx.compose.material3.Text
+import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -36,18 +49,63 @@ import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
 import androidx.navigation.NavHostController
 
+@RequiresApi(Build.VERSION_CODES.O)
+@SuppressLint("")
 @OptIn(ExperimentalMaterial3Api::class)
 
 @Composable
-fun Inicioo_(navController: NavHostController) {
+fun Login(navController: NavHostController ) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
-    val color_fondo_top = Color(0xFFF74357B)
+    val encendido = Color(0xFFF03F3F)
+    val apagado = Color(0xFF539BB2)
     val color_fondo_footer = Color.White
     val color_mass = Color.Black
 
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
+        topBar = {
+            TopAppBar(
+
+                colors = TopAppBarDefaults.centerAlignedTopAppBarColors(
+                    containerColor = color_fondo_footer,
+                    titleContentColor = MaterialTheme.colorScheme.background.also { Color.Red },
+                ),
+                title = {
+                    Text(
+
+                        modifier = Modifier
+                            .fillMaxWidth()
+
+                        ,
+
+
+
+                        fontFamily = FontFamily.Default,
+                        fontSize = 18.sp,
+                        color = Color.Black,
+                        text = "Modificar Estado "
+
+
+
+                    )
+                },
+                navigationIcon = {
+                    IconButton(modifier= Modifier
+                        .background(Color.Transparent)
+                        .clickable { navController.navigate("pantalla1") }
+                        .padding(0.dp),onClick = { navController.navigate("pantalla1") }) {
+                        Icon(
+                            imageVector = Icons.Filled.ArrowBack,
+                            contentDescription = " ",
+                            tint = Color.Black
+                        )
+                    }
+                },
+
+                scrollBehavior = scrollBehavior,
+            )
+        },
         bottomBar = {
             BottomAppBar(
                 containerColor = color_fondo_footer,
@@ -64,7 +122,7 @@ fun Inicioo_(navController: NavHostController) {
                                 painterResource(R.drawable.home )
                                 ,
                                 contentDescription = " ",
-                                tint = Color.Red,
+                                tint = Color.Black,
 
                                 )
 
@@ -127,7 +185,7 @@ fun Inicioo_(navController: NavHostController) {
                         }
                         IconButton(modifier = Modifier
                             .padding(horizontal = 12.dp)
-                            .scale(1.3f),onClick = { navController.navigate("login") }) {
+                            .scale(1.3f),onClick = { /* do something */ }) {
                             Image(
                                 modifier = Modifier
                                     .align(Alignment.CenterVertically)
@@ -157,164 +215,97 @@ fun Inicioo_(navController: NavHostController) {
                 )
         },
     ) { innerPadding ->
+
         Column(
             modifier = Modifier
+                .fillMaxWidth()
                 .background(Color.White)
                 .padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
-            Row(
-                modifier = Modifier
-                    .height(50.dp)
-                    .background(Color.Transparent),
-                horizontalArrangement = Arrangement.spacedBy(0.dp, Alignment.Start),
-                verticalAlignment = Alignment.CenterVertically,
-
-                ){
-                Text(
-
-                    modifier = Modifier
-                        .fillMaxWidth()
-                    ,
-
-                    textAlign = TextAlign.Center,
-                    fontWeight = FontWeight(400),
-                    fontFamily = FontFamily.Default,
-                    fontSize = 21.sp,
-                    color = Color(0xFF000000),
-                    text = "".trimIndent()
-
-
-
-                )
-            }
-
+            Spacer(modifier = Modifier.height(20.dp))
 
             Column (
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
                     .background(Color.Transparent)
                 ,
-                verticalArrangement = Arrangement.spacedBy(16.dp),
-            ){
-                Text(
-                    modifier = Modifier
-                        .height(45.dp)
-                        .fillMaxWidth()
-                        .background(Color.Transparent)
-                        .padding(horizontal = 15.dp)
-                        .clip(RoundedCornerShape(20.dp))
-                    ,
 
-                    textAlign = TextAlign.Center,
-                    fontWeight = FontWeight.Bold,
-                    fontSize = 40.sp,
-                    color = Color.Black,
-                    text ="DOMO TECH".trimIndent()
-                )
+                ){
 
                 Image(
                     modifier = Modifier
                         .align(Alignment.CenterHorizontally)
 
-                        .size(250.dp)
+                        .size(170.dp)
+
 
                     ,
                     painter = painterResource(R.drawable.domotec3),
                     contentDescription ="ss"
                 )
-                Spacer(modifier = Modifier.height(8.dp))
-                Row (
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally)
-                        .background(Color.Transparent)
 
-                    ,
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                ){
-                    Text(
+                Column (modifier= Modifier.background(Color.Transparent).fillMaxWidth()){
+                    var usuario by remember { mutableStateOf("") }
+                    OutlinedTextField(
+                        value = usuario,
+                        onValueChange = { usuario = it },
                         modifier = Modifier
-                            .background(Color.Black  , shape = RoundedCornerShape(30.dp))
-                            .align(Alignment.CenterVertically)
-                            .width(250.dp)
-                            .padding(horizontal = 15.dp)
-                            .padding(vertical = 10.dp)
-                            .clickable { navController.navigate("pantalla2")
-                                       }
+                            .height(70.dp)
+                            .padding(2.dp)
+                            .align(Alignment.CenterHorizontally)
+
                         ,
-
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        color = Color.White,
-
-                        text ="DISPOSITIVOS CONECTADOS".trimIndent()
-
+                        label = { Text(fontSize = 13.sp,text = "USUARIO") }
                     )
 
-
-                }
-                Row (
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally)
-                        .background(Color.Transparent)
-                        .clickable { navController.navigate("seguridad")}
-                    ,
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                ){
-                    Text(
+                    var contraseña by remember { mutableStateOf("") }
+                    OutlinedTextField(
+                        value = contraseña,
+                        onValueChange = { contraseña = it },
                         modifier = Modifier
-                            .background(Color.Black  , shape = RoundedCornerShape(30.dp))
-                            .align(Alignment.CenterVertically)
-                            .width(250.dp)
-                            .padding(horizontal = 15.dp)
-                            .padding(vertical = 10.dp)
-                            .clickable { navController.navigate("seguridad")
-                            }
-                        ,
-
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        color = Color.White,
-
-                        text ="SEGURIDAD".trimIndent()
-
+                            .height(70.dp)
+                            .align(Alignment.CenterHorizontally)
+                            .padding(2.dp),
+                        label = { Text(fontSize = 13.sp,text = "CONTRASEÑA") }
                     )
-
-
-                }
-                Row (
-                    modifier = Modifier
-                        .align(Alignment.CenterHorizontally)
-                        .background(Color.Transparent)
-
-                    ,
-                    horizontalArrangement = Arrangement.spacedBy(16.dp),
-                ){
-                    Text(
-                        modifier = Modifier
-                            .background(Color.Black  , shape = RoundedCornerShape(30.dp))
-                            .align(Alignment.CenterVertically)
-                            .width(250.dp)
-                            .padding(horizontal = 15.dp)
-                            .padding(vertical = 10.dp)
-                            .clickable { navController.navigate("historial")
-                            }
-                        ,
-
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 20.sp,
-                        color = Color.White,
-
-                        text ="HISTORIAL".trimIndent()
-
-                    )
-
-
                 }
 
+
+
+
+
+
+
+
+                Spacer(modifier = Modifier.height(30.dp))
+                Row (modifier = Modifier
+                    .background(Color.Transparent)
+                    .align(Alignment.CenterHorizontally),
+                    horizontalArrangement = Arrangement.spacedBy(50.dp),){
+                    FloatingActionButton(modifier = Modifier
+
+                        .height(48.dp)
+                        .background(color_mass, shape = RoundedCornerShape(7.dp))
+                        .padding(horizontal = 15.dp)
+                        .padding(vertical = 8.dp)
+                        ,
+                        onClick = { navController.navigate("pantalla6") },
+                        containerColor = color_mass,
+                        elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
+                    ) {
+                        Text(
+                            modifier = Modifier.background(Color.Transparent)
+                            ,
+                            textAlign = TextAlign.Center,
+                            fontWeight = FontWeight.Bold,
+                            fontSize = 15.sp,
+                            color = Color.White,
+                            text ="INGRESAR".trimIndent()
+                        )
+                    }
+
+                }
 
 
 
@@ -325,7 +316,14 @@ fun Inicioo_(navController: NavHostController) {
 
 
 
-        }
 
+
+
+
+
+
+
+        }
     }
+
 }

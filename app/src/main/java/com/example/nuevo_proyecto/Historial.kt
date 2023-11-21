@@ -51,7 +51,7 @@ import androidx.navigation.NavHostController
 @OptIn(ExperimentalMaterial3Api::class)
 
 @Composable
-fun Dispositivos_conectados(navController: NavHostController) {
+fun Historial(navController: NavHostController) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val color_fondo_top = Color(0xFFF74357B)
     val color_fondo_footer = Color.White
@@ -80,7 +80,7 @@ fun Dispositivos_conectados(navController: NavHostController) {
                         fontFamily = FontFamily.Default,
                         fontSize = 18.sp,
                         color = Color.Black,
-                        text = " Dispositivos Conectados "
+                        text = "  Historial de Alertas "
 
 
 
@@ -213,28 +213,19 @@ fun Dispositivos_conectados(navController: NavHostController) {
     ) { innerPadding ->
         Column(
             modifier = Modifier
-
+                .fillMaxWidth()
+                .background(Color.Transparent)
                 .padding(innerPadding),
             verticalArrangement = Arrangement.spacedBy(16.dp),
         ) {
 
-            Text(
-                modifier = Modifier
-                    .background(Color.Transparent).width(315.dp).align(Alignment.CenterHorizontally)
-                ,
-
-                fontFamily = FontFamily.Default,
-                fontWeight = FontWeight.Bold,
-                fontSize = 18.sp,
-                color = Color.Black,
-                text = "Lista de Artefactos".trimIndent()
-            )
+            Spacer(modifier = Modifier.height(15.dp))
             Row (
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
-
+                    .background(Color.Transparent)
                 ,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
             ){
 
                 Image(
@@ -255,7 +246,9 @@ fun Dispositivos_conectados(navController: NavHostController) {
                     painter = painterResource(R.drawable.imagen_2),
                     contentDescription ="ss"
                 )
-                Column (modifier = Modifier.background(Color.Transparent).width(123.dp)){
+                Column (modifier = Modifier
+                    .background(Color.Transparent)
+                    .width(240.dp)){
                     Text(
                         modifier = Modifier
                             .padding(1.dp)
@@ -265,7 +258,7 @@ fun Dispositivos_conectados(navController: NavHostController) {
                         fontWeight = FontWeight.Bold,
                         fontSize = 15.sp,
                         color = Color.Black,
-                        text ="Foco 1".trimIndent()
+                        text ="20 de noviembre de 2023".trimIndent()
                     )
                     Text(
                         modifier = Modifier
@@ -276,53 +269,18 @@ fun Dispositivos_conectados(navController: NavHostController) {
 
                         fontSize = 15.sp,
                         color = Color.Black,
-                        text ="Estado:".trimIndent()
+                        text ="Se activo la alarma".trimIndent()
                     )
-                    Text(
-                        modifier = Modifier
-                            .padding(1.dp)
-                        ,
 
-                        textAlign = TextAlign.Center,
-
-                        fontSize = 15.sp,
-                        color = Color.Black,
-                        text ="Encendido".trimIndent()
-                    )
                 }
-
-
-                FloatingActionButton(modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .height(48.dp)
-                    .background(Color.Black ,  shape = RoundedCornerShape(7.dp))
-                    .padding(horizontal = 15.dp)
-                    .padding(vertical = 8.dp)
-                    ,
-                    onClick = { navController.navigate("pantalla9") },
-                    containerColor = color_mass,
-                    elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
-                ) {
-                    Text(
-                        modifier = Modifier
-                        ,
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 15.sp,
-                        color = Color.White,
-                        text ="MODIFICAR".trimIndent()
-                    )
-                }
-
-
-
             }
+
             Row (
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
-
+                    .background(Color.Transparent)
                 ,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
             ){
 
                 Image(
@@ -340,10 +298,12 @@ fun Dispositivos_conectados(navController: NavHostController) {
                             )
                         )
                     ,
-                    painter = painterResource(R.drawable.imagen_2),
+                    painter = painterResource(R.drawable.ellipse),
                     contentDescription ="ss"
                 )
-                Column (modifier = Modifier.background(Color.Transparent).width(123.dp)){
+                Column (modifier = Modifier
+                    .background(Color.Transparent)
+                    .width(240.dp)){
                     Text(
                         modifier = Modifier
                             .padding(1.dp)
@@ -353,7 +313,7 @@ fun Dispositivos_conectados(navController: NavHostController) {
                         fontWeight = FontWeight.Bold,
                         fontSize = 15.sp,
                         color = Color.Black,
-                        text ="Foco 2".trimIndent()
+                        text ="10 de diciembre de 2023".trimIndent()
                     )
                     Text(
                         modifier = Modifier
@@ -364,53 +324,18 @@ fun Dispositivos_conectados(navController: NavHostController) {
 
                         fontSize = 15.sp,
                         color = Color.Black,
-                        text ="Estado:".trimIndent()
+                        text ="Se activo la alarma".trimIndent()
                     )
-                    Text(
-                        modifier = Modifier
-                            .padding(1.dp)
-                        ,
 
-                        textAlign = TextAlign.Center,
-
-                        fontSize = 15.sp,
-                        color = Color.Black,
-                        text ="Encendido".trimIndent()
-                    )
                 }
-
-
-                FloatingActionButton(modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .height(48.dp)
-                    .background(Color.Black ,  shape = RoundedCornerShape(7.dp))
-                    .padding(horizontal = 15.dp)
-                    .padding(vertical = 8.dp)
-                    ,
-                    onClick = { navController.navigate("pantalla9") },
-                    containerColor = color_mass,
-                    elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
-                ) {
-                    Text(
-                        modifier = Modifier
-                        ,
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 15.sp,
-                        color = Color.White,
-                        text ="MODIFICAR".trimIndent()
-                    )
-                }
-
-
-
             }
+
             Row (
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
-
+                    .background(Color.Transparent)
                 ,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
             ){
 
                 Image(
@@ -428,10 +353,12 @@ fun Dispositivos_conectados(navController: NavHostController) {
                             )
                         )
                     ,
-                    painter = painterResource(R.drawable.imagen_2),
+                    painter = painterResource(R.drawable.segund),
                     contentDescription ="ss"
                 )
-                Column (modifier = Modifier.background(Color.Transparent).width(123.dp)){
+                Column (modifier = Modifier
+                    .background(Color.Transparent)
+                    .width(240.dp)){
                     Text(
                         modifier = Modifier
                             .padding(1.dp)
@@ -441,7 +368,7 @@ fun Dispositivos_conectados(navController: NavHostController) {
                         fontWeight = FontWeight.Bold,
                         fontSize = 15.sp,
                         color = Color.Black,
-                        text ="Foco 3".trimIndent()
+                        text ="16 de diciembre de 2023".trimIndent()
                     )
                     Text(
                         modifier = Modifier
@@ -452,53 +379,18 @@ fun Dispositivos_conectados(navController: NavHostController) {
 
                         fontSize = 15.sp,
                         color = Color.Black,
-                        text ="Estado:".trimIndent()
+                        text ="Se activo la alarma".trimIndent()
                     )
-                    Text(
-                        modifier = Modifier
-                            .padding(1.dp)
-                        ,
 
-                        textAlign = TextAlign.Center,
-
-                        fontSize = 15.sp,
-                        color = Color.Black,
-                        text ="Encendido".trimIndent()
-                    )
                 }
-
-
-                FloatingActionButton(modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .height(48.dp)
-                    .background(Color.Black ,  shape = RoundedCornerShape(7.dp))
-                    .padding(horizontal = 15.dp)
-                    .padding(vertical = 8.dp)
-                    ,
-                    onClick = { navController.navigate("pantalla9") },
-                    containerColor = color_mass,
-                    elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
-                ) {
-                    Text(
-                        modifier = Modifier
-                        ,
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 15.sp,
-                        color = Color.White,
-                        text ="MODIFICAR".trimIndent()
-                    )
-                }
-
-
-
             }
+
             Row (
                 modifier = Modifier
                     .align(Alignment.CenterHorizontally)
-
+                    .background(Color.Transparent)
                 ,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
             ){
 
                 Image(
@@ -516,10 +408,12 @@ fun Dispositivos_conectados(navController: NavHostController) {
                             )
                         )
                     ,
-                    painter = painterResource(R.drawable.imagen_2),
+                    painter = painterResource(R.drawable.chica),
                     contentDescription ="ss"
                 )
-                Column (modifier = Modifier.background(Color.Transparent).width(123.dp)){
+                Column (modifier = Modifier
+                    .background(Color.Transparent)
+                    .width(240.dp)){
                     Text(
                         modifier = Modifier
                             .padding(1.dp)
@@ -529,7 +423,7 @@ fun Dispositivos_conectados(navController: NavHostController) {
                         fontWeight = FontWeight.Bold,
                         fontSize = 15.sp,
                         color = Color.Black,
-                        text ="Foco 4".trimIndent()
+                        text ="20 de diciembre de 2023".trimIndent()
                     )
                     Text(
                         modifier = Modifier
@@ -540,104 +434,72 @@ fun Dispositivos_conectados(navController: NavHostController) {
 
                         fontSize = 15.sp,
                         color = Color.Black,
-                        text ="Estado:".trimIndent()
+                        text ="Se activo la alarma".trimIndent()
                     )
-                    Text(
-                        modifier = Modifier
-                            .padding(1.dp)
-                        ,
 
-                        textAlign = TextAlign.Center,
-
-                        fontSize = 15.sp,
-                        color = Color.Black,
-                        text ="Encendido".trimIndent()
-                    )
                 }
+            }
 
+            Row (
+                modifier = Modifier
+                    .align(Alignment.CenterHorizontally)
+                    .background(Color.Transparent)
+                ,
+                horizontalArrangement = Arrangement.spacedBy(10.dp),
+            ){
 
-                FloatingActionButton(modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .height(48.dp)
-                    .background(Color.Black ,  shape = RoundedCornerShape(7.dp))
-                    .padding(horizontal = 15.dp)
-                    .padding(vertical = 8.dp)
+                Image(
+                    modifier = Modifier
+                        .align(Alignment.CenterVertically)
+
+                        .size(60.dp)
+
+                        .clip(
+                            RoundedCornerShape(
+                                topEnd = 100.dp,
+                                topStart = 100.dp,
+                                bottomEnd = 100.dp,
+                                bottomStart = 100.dp
+                            )
+                        )
                     ,
-                    onClick = { navController.navigate("pantalla9") },
-                    containerColor = color_mass,
-                    elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
-                ) {
+                    painter = painterResource(R.drawable.ellipse),
+                    contentDescription ="ss"
+                )
+                Column (modifier = Modifier
+                    .background(Color.Transparent)
+                    .width(240.dp)){
                     Text(
                         modifier = Modifier
+                            .padding(1.dp)
                         ,
+
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.Bold,
                         fontSize = 15.sp,
-                        color = Color.White,
-                        text ="MODIFICAR".trimIndent()
+                        color = Color.Black,
+                        text ="25 de diciembre de 2023".trimIndent()
                     )
-                }
-
-
-
-            }
-            Spacer(modifier = Modifier.height(6.dp))
-            Column(modifier= Modifier.background(Color.Transparent).fillMaxWidth()) {
-                Row(
-                    modifier = Modifier.height(60.dp).background(Color.Transparent).width(300.dp).align(
-                        Alignment.CenterHorizontally
-                    ).border(2.dp, Color.Black).clip(RoundedCornerShape(50)),
-                    horizontalArrangement = Arrangement.spacedBy(0.dp, Alignment.Start),
-
-                    ){
                     Text(
-
-                        modifier = Modifier.align(Alignment.CenterVertically)
-                            .fillMaxWidth()
-
-
+                        modifier = Modifier
+                            .padding(1.dp)
                         ,
 
                         textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
 
-                        fontSize = 13.sp,
-                        color = Color(0xFF000000),
-                        text = "ENCENDER TODO".trimIndent()
-
-
-
+                        fontSize = 15.sp,
+                        color = Color.Black,
+                        text ="Se activo la alarma".trimIndent()
                     )
+
                 }
             }
 
-            Column(modifier= Modifier.background(Color.Transparent).fillMaxWidth()) {
-                Row(
-                    modifier = Modifier.height(60.dp).background(Color.Transparent).width(300.dp).align(
-                        Alignment.CenterHorizontally
-                    ).border(2.dp, Color.Black).clip(RoundedCornerShape(50)),
-                    horizontalArrangement = Arrangement.spacedBy(0.dp, Alignment.Start),
-
-                    ){
-                    Text(
-
-                        modifier = Modifier.align(Alignment.CenterVertically)
-                            .fillMaxWidth()
-
-                        ,
-
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-
-                        fontSize = 13.sp,
-                        color = Color(0xFF000000),
-                        text = "APAGAR TODO".trimIndent()
 
 
 
-                    )
-                }
-            }
+
+
 
 
 
