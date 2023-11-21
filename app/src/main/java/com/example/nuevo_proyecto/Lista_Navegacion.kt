@@ -27,7 +27,7 @@ class MainActivity : ComponentActivity() {
 @Composable
 fun Principal(){
     val navegacion= rememberNavController()
-    NavHost(navController = navegacion, startDestination ="login_comi" ){
+    NavHost(navController = navegacion, startDestination ="login_general" ){
 
         composable("pantalla1"){ Inicioo_(navegacion)}
         composable("pantalla2"){ Dispositivos_conectados(navegacion) }
@@ -40,7 +40,7 @@ fun Principal(){
         composable("pantalla9"){ Estado(navegacion) }
         composable("alarma"){ Alarma(navegacion) }
         composable("login"){ Login(navegacion) }
-        composable("login_comi"){ Login_Comi(navegacion) }
+        composable("login_general"){ Login_Comi(navegacion) }
         composable("historial"){ Historial(navegacion) }
 
     }
