@@ -2,6 +2,7 @@ package com.example.nuevo_proyecto
 
 import android.annotation.SuppressLint
 import android.os.Build
+import android.util.Log
 import androidx.annotation.RequiresApi
 import androidx.compose.foundation.Image
 import androidx.compose.foundation.background
@@ -31,6 +32,10 @@ import androidx.compose.material3.TopAppBar
 import androidx.compose.material3.TopAppBarDefaults
 import androidx.compose.material3.rememberTopAppBarState
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.getValue
+import androidx.compose.runtime.mutableStateOf
+import androidx.compose.runtime.remember
+import androidx.compose.runtime.setValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
 import androidx.compose.ui.draw.clip
@@ -50,7 +55,9 @@ import androidx.navigation.NavHostController
 @OptIn(ExperimentalMaterial3Api::class)
 
 @Composable
-fun Estado(navController: NavHostController) {
+fun Estado(navController: NavHostController, viewModel: EjemploViewModel) {
+    var imagenEncendido by remember { mutableStateOf(R.drawable.apagado) }
+    Log.d("Estado", "Entrando en el estado")
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val encendido = Color(0xFFF03F3F)
     val apagado = Color(0xFF539BB2)
@@ -237,7 +244,7 @@ fun Estado(navController: NavHostController) {
 
 
                     ,
-                    painter = painterResource(R.drawable.encendido),
+                    painter = painterResource(imagenEncendido),
                     contentDescription ="ss"
                 )
                 Spacer(modifier = Modifier.height(40.dp))
@@ -252,7 +259,8 @@ fun Estado(navController: NavHostController) {
                         .padding(horizontal = 15.dp)
                         .padding(vertical = 8.dp)
                         ,
-                        onClick = { navController.navigate("pantalla6") },
+                        onClick = { viewModel.publishMessageE("esp/led1")
+                            imagenEncendido = R.drawable.encendido2},
                         containerColor = encendido,
                         elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
                     ) {
@@ -273,7 +281,8 @@ fun Estado(navController: NavHostController) {
                         .padding(horizontal = 15.dp)
                         .padding(vertical = 8.dp)
                         ,
-                        onClick = { navController.navigate("pantalla6") },
+                        onClick = { viewModel.publishMessageA("esp/led1")
+                            imagenEncendido = R.drawable.apagado},
                         containerColor = apagado,
                         elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
                     ) {
@@ -307,5 +316,5 @@ fun Estado(navController: NavHostController) {
 
         }
     }
-
+    Log.d("Estado", "Saliendo del estado")
 }

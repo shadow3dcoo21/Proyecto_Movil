@@ -50,7 +50,7 @@ import androidx.navigation.NavHostController
 @OptIn(ExperimentalMaterial3Api::class)
 
 @Composable
-fun Alarma(navController: NavHostController) {
+fun Alarma(navController: NavHostController , viewModel: EjemploViewModel) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val encendido = Color(0xFFF03F3F)
     val apagado = Color(0xFF539BB2)
@@ -252,7 +252,7 @@ fun Alarma(navController: NavHostController) {
                         .padding(horizontal = 15.dp)
                         .padding(vertical = 8.dp)
                         ,
-                        onClick = { navController.navigate("pantalla6") },
+                        onClick = { viewModel.publishMessageE("esp/alarma") },
                         containerColor = encendido,
                         elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
                     ) {
@@ -273,7 +273,7 @@ fun Alarma(navController: NavHostController) {
                         .padding(horizontal = 15.dp)
                         .padding(vertical = 8.dp)
                         ,
-                        onClick = { navController.navigate("pantalla6") },
+                        onClick = { viewModel.publishMessageA("esp/alarma") },
                         containerColor = apagado,
                         elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
                     ) {

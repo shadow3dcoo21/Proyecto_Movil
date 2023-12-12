@@ -51,12 +51,12 @@ import androidx.navigation.NavHostController
 @OptIn(ExperimentalMaterial3Api::class)
 
 @Composable
-fun Dispositivos_conectados(navController: NavHostController) {
+fun Dispositivos_conectados(navController: NavHostController , viewModel: EjemploViewModel) {
     val scrollBehavior = TopAppBarDefaults.pinnedScrollBehavior(rememberTopAppBarState())
     val color_fondo_top = Color(0xFFF74357B)
     val color_fondo_footer = Color.White
     val color_mass = Color.Black
-
+    val foco = 1
 
     Scaffold(
         modifier = Modifier.nestedScroll(scrollBehavior.nestedScrollConnection),
@@ -282,26 +282,31 @@ fun Dispositivos_conectados(navController: NavHostController) {
                         modifier = Modifier
                             .padding(1.dp)
                         ,
-
                         textAlign = TextAlign.Center,
-
                         fontSize = 15.sp,
                         color = Color.Black,
-                        text ="Encendido".trimIndent()
+                        text = when (foco) {
+                            1 -> "Estado: ${viewModel.estadoFoco1}"
+
+                            else -> ""
+                        }.trimIndent()
                     )
                 }
 
-
+                val valorUnico = "esp/led1"
                 FloatingActionButton(modifier = Modifier
+
                     .align(Alignment.CenterVertically)
                     .height(48.dp)
                     .background(Color.Black ,  shape = RoundedCornerShape(7.dp))
                     .padding(horizontal = 15.dp)
                     .padding(vertical = 8.dp)
                     ,
+
                     onClick = { navController.navigate("pantalla9") },
                     containerColor = color_mass,
                     elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
+
                 ) {
                     Text(
                         modifier = Modifier
@@ -387,7 +392,7 @@ fun Dispositivos_conectados(navController: NavHostController) {
                     .padding(horizontal = 15.dp)
                     .padding(vertical = 8.dp)
                     ,
-                    onClick = { navController.navigate("pantalla9") },
+                    onClick = { navController.navigate("Estado2") },
                     containerColor = color_mass,
                     elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
                 ) {
@@ -475,7 +480,7 @@ fun Dispositivos_conectados(navController: NavHostController) {
                     .padding(horizontal = 15.dp)
                     .padding(vertical = 8.dp)
                     ,
-                    onClick = { navController.navigate("pantalla9") },
+                    onClick = { navController.navigate("Estado3") },
                     containerColor = color_mass,
                     elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
                 ) {
@@ -493,94 +498,7 @@ fun Dispositivos_conectados(navController: NavHostController) {
 
 
             }
-            Row (
-                modifier = Modifier
-                    .align(Alignment.CenterHorizontally)
 
-                ,
-                horizontalArrangement = Arrangement.spacedBy(16.dp),
-            ){
-
-                Image(
-                    modifier = Modifier
-                        .align(Alignment.CenterVertically)
-
-                        .size(60.dp)
-
-                        .clip(
-                            RoundedCornerShape(
-                                topEnd = 100.dp,
-                                topStart = 100.dp,
-                                bottomEnd = 100.dp,
-                                bottomStart = 100.dp
-                            )
-                        )
-                    ,
-                    painter = painterResource(R.drawable.imagen_2),
-                    contentDescription ="ss"
-                )
-                Column (modifier = Modifier.background(Color.Transparent).width(123.dp)){
-                    Text(
-                        modifier = Modifier
-                            .padding(1.dp)
-                        ,
-
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 15.sp,
-                        color = Color.Black,
-                        text ="Foco 4".trimIndent()
-                    )
-                    Text(
-                        modifier = Modifier
-                            .padding(1.dp)
-                        ,
-
-                        textAlign = TextAlign.Center,
-
-                        fontSize = 15.sp,
-                        color = Color.Black,
-                        text ="Estado:".trimIndent()
-                    )
-                    Text(
-                        modifier = Modifier
-                            .padding(1.dp)
-                        ,
-
-                        textAlign = TextAlign.Center,
-
-                        fontSize = 15.sp,
-                        color = Color.Black,
-                        text ="Encendido".trimIndent()
-                    )
-                }
-
-
-                FloatingActionButton(modifier = Modifier
-                    .align(Alignment.CenterVertically)
-                    .height(48.dp)
-                    .background(Color.Black ,  shape = RoundedCornerShape(7.dp))
-                    .padding(horizontal = 15.dp)
-                    .padding(vertical = 8.dp)
-                    ,
-                    onClick = { navController.navigate("pantalla9") },
-                    containerColor = color_mass,
-                    elevation = FloatingActionButtonDefaults.bottomAppBarFabElevation()
-                ) {
-                    Text(
-                        modifier = Modifier
-                        ,
-                        textAlign = TextAlign.Center,
-                        fontWeight = FontWeight.Bold,
-                        fontSize = 15.sp,
-                        color = Color.White,
-                        text ="MODIFICAR".trimIndent()
-                    )
-                }
-
-
-
-            }
             Spacer(modifier = Modifier.height(6.dp))
             Column(modifier= Modifier.background(Color.Transparent).fillMaxWidth()) {
                 Row(
@@ -595,7 +513,7 @@ fun Dispositivos_conectados(navController: NavHostController) {
                         modifier = Modifier.align(Alignment.CenterVertically)
                             .fillMaxWidth()
 
-
+                            .clickable { viewModel.publishMessageTE() }
                         ,
 
                         textAlign = TextAlign.Center,
@@ -624,8 +542,7 @@ fun Dispositivos_conectados(navController: NavHostController) {
                         modifier = Modifier.align(Alignment.CenterVertically)
                             .fillMaxWidth()
 
-                        ,
-
+                            .clickable { viewModel.publishMessageTA() },
                         textAlign = TextAlign.Center,
                         fontWeight = FontWeight.Bold,
 
